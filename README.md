@@ -104,7 +104,7 @@ The parameters for the plot. x-y position on the file, position of labels, etc. 
 e, 0, 1, campestre.heterophyllum.anchors.simple
 ```
 
-### Create the "simple" file used referred to in the *layout* file
+### Create the "simple" file referred to in the *layout* file
 It's a simpler version of the anchors file, necessary for plotting
 ```
 python -m jcvi.compara.synteny screen --minspan=30 --simple campestre.heterophyllum.anchors campestre.heterophyllum.anchors.new 
