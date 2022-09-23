@@ -145,17 +145,17 @@ e, 1, 2, heterophyllum .hirtum_nebrodense.anchors.simple
 ### PLOT WITH THREE SPECIES
 First make sure you have the pairwise synteny search for the two pairs that will form the three-species plot. Remember that it must be: top species with middle species. Then middle species and bottom species, in this strict order. You might now have these from before in the exact order.
 ```
-python -m jcvi.compara.catalog ortholog campestre hirtum_nebrodense --no_strip_names
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum campestre --no_strip_names
+python -m jcvi.compara.catalog ortholog campestre hybrid --no_strip_names
+python -m jcvi.compara.catalog ortholog hybrid heterophyllum --no_strip_names
 ```
 #### Now you have to create the simplified anchor files, just like before, for the two pairs.
 ```
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple hirtum_atlanticum.campestre.anchors hirtum_atlanticum.campestre.anchors.new
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple campestre.hirtum_nebrodense.anchors campestre.hirtum_nebrodense.anchors.new
+python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple campestre.hybrid.anchors campestre.hybrid.anchors.new
+python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple hybrid.heterophyllum.anchors hybrid.heterophyllum.anchors.new
 ```
 #### You can then plot the figure using
 
-`python -m jcvi.graphics.karyotype three.seqids atlanticum.campestre.nebro.three.layout`
+`python -m jcvi.graphics.karyotype three.seqids campestre.hybrid.heterophyllum.three.layout`
 
 ![three species karyotype style figure](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre-hybrid-heterophyllum-version-2-newkaryotype.png)
 
