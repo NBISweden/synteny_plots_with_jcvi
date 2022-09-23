@@ -197,7 +197,7 @@ LCAMPM00000027242   LHETEM00000033643
 ### PLOT MICROSYNTENY
 `python -m jcvi.graphics.synteny gtr1.block campestre_heterophyllum.bed blocks.layout`
 
-![single gene mapping example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/gtr1.png)
+![single gene microsynteny two species](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/lg1.micro.two.species.png)
 
 #### Add-ons to plotting
 If you want to add more flourishes you can. You can use "--glyphstyle=arrow" to add arrows for genes/features, also "--genelabels=LCAMPM00000027240" to highlight a particular feature of interest, and control the size of the font with "--genelabelsize=10".
@@ -211,29 +211,17 @@ It follows the same steps as before. Create the block.layout file, the block fil
 
 cat campestre.bed heterophyllum.bed hybrid.bed > campestre_heterophyllum_hybrid.bed
 
-### Some genes that I plotted
-
 #### GTR1
+One example for GTR1.
+
 `python -m jcvi.graphics.synteny gtr1.blocks campestre_heterophyllum_hybrid.bed LG5.blocks.layout --glyphstyle=arrow`
 
-#### GTR2
-`python -m jcvi.graphics.synteny gtr2.blocks campestre_heterophyllum_hybrid.bed LG8.blocks.layout --glyphstyle=arrow`
+![single gene mapping 3 species example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/gtr1.png)
 
-#### TAG1
-`python -m jcvi.graphics.synteny tag1.blocks campestre_heterophyllum_hybrid.bed LG3.blocks.layout --glyphstyle=arrow`
-
-#### FAD2
-`python -m jcvi.graphics.synteny fad2.blocks campestre_heterophyllum_hybrid.bed LG3.blocks.layout --glyphstyle=arrow`
-
-#### WRI1
-`python -m jcvi.graphics.synteny wri.blocks campestre_heterophyllum_hybrid.bed LG5.blocks.layout --glyphstyle=arrow`
-
-#### FAE1 - BOTH COPIES
-`python -m jcvi.graphics.synteny FAE_1.blocks campestre_heterophyllum_hybrid.bed LG3.blocks.layout --glyphstyle=arrow`
 
 
 ## PLOTTING AGAINST ARABIDOPSIS
-This is the same steps as before, but now I'm creating comparison not within Lepidium, but between the different Lepidium species and Arabidopsis thaliana.
+This is the same steps as before, but now I'm creating comparison not within Lepidium, but between the different Lepidium species and Arabidopsis thaliana. These plots are more interesting.
 
 ### Generate input files for the Arabidopsis genome
 ```
@@ -268,67 +256,6 @@ python -m jcvi.graphics.karyotype lep.arabid.seqids lep.arabid.layout
 
 ![arabidopsis karyotype example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.arabidopsis.karyotype.png)
 
-### Lepidium heterophyllum vs Arabidopsis
-```
-#### Pairwise synteny search - heterophyllum - arabidopsis
-python -m jcvi.compara.catalog ortholog heterophyllum arabidopsis --no_strip_names
-#### Plot histogram  - heterophyllum - arabidopsis
-python -m jcvi.compara.synteny depth --histogram heterophyllum.arabidopsis.anchors
-#### Plot synteny figure - heterophyllum - arabidopsis
-#### lep.arabid.seqids - same as before
-#### Prepare Simple anchors file for plotting
-python -m jcvi.compara.synteny screen --minspan=10 --simple heterophyllum.arabidopsis.anchors heterophyllum.arabidopsis.anchors.new 
-#### DO NOT FORGET TO ADJUST THE LAYOUT FILE
-#### Plotting figure 1x1 - heterophyllum - arabidopsis
-python -m jcvi.graphics.karyotype lep.arabid.seqids hetero.arabid.layout
-```
-
-
-### Hybrid vs Arabidopsis
-```
-#### Pairwise synteny search - hybrid - arabidopsis
-python -m jcvi.compara.catalog ortholog hybrid arabidopsis --no_strip_names
-#### Plot histogram  - hybrid - arabidopsis
-python -m jcvi.compara.synteny depth --histogram hybrid.arabidopsis.anchors
-#### Plot synteny figure - hybrid - arabidopsis
-#### lep.arabid.seqids - same as before
-#### Prepare Simple anchors file for plotting
-python -m jcvi.compara.synteny screen --minspan=10 --simple hybrid.arabidopsis.anchors hybrid.arabidopsis.anchors.new 
-#### DO NOT FORGET TO ADJUST THE LAYOUT FILE
-#### Plotting figure 1x1 - hybrid - arabidopsis
-python -m jcvi.graphics.karyotype lep.arabid.seqids hybrid.arabid.layout
-```
-
-### L. hirtum atlanticum vs Arabidopsis
-```
-#### Pairwise synteny search - hirtum_atlanticum - arabidopsis
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum arabidopsis --no_strip_names
-#### Plot histogram  - hirtum_atlanticum - arabidopsis
-python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.arabidopsis.anchors
-#### Plot synteny figure - hirtum_atlanticum - arabidopsis
-#### lep.arabid.seqids - same as before
-#### Prepare Simple anchors file for plotting
-python -m jcvi.compara.synteny screen --minspan=10 --simple hirtum_atlanticum.arabidopsis.anchors hirtum_atlanticum.arabidopsis.anchors.new 
-#### DO NOT FORGET TO ADJUST THE LAYOUT FILE
-## Plotting figure 1x1 - hirtum_atlanticum - arabidopsis
-python -m jcvi.graphics.karyotype lep.arabid.seqids hirtum_atlanticum.arabid.layout
-```
-
-
-### L. hirtum nebrodense vs Arabidopsis
-```
-#### Pairwise synteny search - hirtum_nebrodense - arabidopsis
-python -m jcvi.compara.catalog ortholog hirtum_nebrodense arabidopsis --no_strip_names 
-#### Plot histogram  - hirtum_nebrodense - arabidopsis
-python -m jcvi.compara.synteny depth --histogram hirtum_nebrodense.arabidopsis.anchors
-#### Plot synteny figure - hirtum_nebrodense - arabidopsis
-#### lep.arabid.seqids - same as before
-#### Prepare Simple anchors file for plotting
-python -m jcvi.compara.synteny screen --minspan=10 --simple hirtum_nebrodense.arabidopsis.anchors hirtum_nebrodense.arabidopsis.anchors.new 
-#### DO NOT FORGET TO ADJUST THE LAYOUT FILE
-#### Plotting figure 1x1 - hirtum_nebrodense - arabidopsis
-python -m jcvi.graphics.karyotype lep.arabid.seqids hirtum_nebrodense.arabid.layout --figsize=12x8
-```
 
 ## Known Issues
 
