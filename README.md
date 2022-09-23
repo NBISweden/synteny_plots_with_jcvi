@@ -241,19 +241,25 @@ conda activate jcvi
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/Arabidopsis_thaliana.TAIR10.cds.fa arabidopsis.cds
 ```
 ### Now generate all the plots
+Please notice in the quote block below that you need to manually create some files, it's not a copy and paste case here.
 ```
 #### Pairwise synteny search - campestre - arabidopsis
 python -m jcvi.compara.catalog ortholog campestre arabidopsis --no_strip_names
 python -m jcvi.compara.catalog ortholog arabidopsis campestre --no_strip_names
+
 #### Plot histogram  - campestre - arabidopsis
 python -m jcvi.compara.synteny depth --histogram campestre.arabidopsis.anchors
+
 #### Plot synteny figure - campestre - arabidopsis
-##### lep.arabid.seqids
+
+##### chrs have different names between assemblies, so be aware of that. lep.arabid.seqids is the file created with these two lines:
 LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
 1,2,3,4,5
+
 #### Prepare Simple anchors file for plotting
 python -m jcvi.compara.synteny screen --minspan=10 --simple campestre.arabidopsis.anchors campestre.arabidopsis.anchors.new 
 python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple campestre.arabidopsis.anchors campestre.arabidopsis.anchors.new
+
 #### Plotting figure 1x1 - campestre - arabidopsis
 python -m jcvi.graphics.karyotype lep.arabid.seqids lep.arabid.layout
 ```
