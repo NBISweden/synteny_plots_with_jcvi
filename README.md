@@ -191,7 +191,7 @@ Now I chose 30 blocks before and after the area I'm interested. You have to play
 ![single gene microsynteny two species](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/lg1.micro.two.species.png)
 
 #### Add-ons to plotting
-If you want to add more flourishes you can. You can use "--glyphstyle=arrow" to add arrows for genes/features, also "--genelabels=LCAMPM00000027240" to highlight a particular feature of interest, and control the size of the font with "--genelabelsize=10".
+If you want, you can add more flourishes to the plot. You can use "--glyphstyle=arrow" to add arrows for genes/features, also "--genelabels=LCAMPM00000027240" to highlight a particular feature of interest, and control the size of the font with "--genelabelsize=10".
 
 `python -m jcvi.graphics.synteny gtr1block campestre_heterophyllum.bed gtr1.blocks.layout --glyphstyle=arrow --genelabels=LCAMPM00000027240,LHETEM00000033639 --genelabelsize=10`
 
@@ -206,11 +206,15 @@ It follows the same steps as before. Create the block.layout file, the block fil
 To do that you'll have to manually edit the blocks file. You add a code for a color and an asterisk. For example, to highlight in green a region, just add g* to the beginning of the line. Here's an example:
 
 ```
-LCAMPM00000027239   LHETEM00000033632
-g*LCAMPM00000027240 LHETEM00000033639
-LCAMPM00000027241   LHETEM00000033642
-LCAMPM00000027242   LHETEM00000033643
+LCAMPM00000027237	LHETEM00000033623	LHYBCAMPHETEM00000027343
+LCAMPM00000027238	LHETEM00000033628	LHYBCAMPHETEM00000027350
+LCAMPM00000027239	LHETEM00000033632	LHYBCAMPHETEM00000027351
+g*LCAMPM00000027240	LHETEM00000033639	LHYBCAMPHETEM00000027352
+LCAMPM00000027241	LHETEM00000033642	LHYBCAMPHETEM00000027353
+LCAMPM00000027242	LHETEM00000033643	LHYBCAMPHETEM00000027354
+LCAMPM00000027243	LHETEM00000033644	LHYBCAMPHETEM00000027354
 ```
+If you want to highlight more than one region you can add "r*" to highlight another block in red, for example.
 
 #### GTR1
 One example for GTR1.
@@ -221,10 +225,10 @@ One example for GTR1.
 
 
 
-## PLOTTING AGAINST ARABIDOPSIS
-This is the same steps as before, but now I'm creating comparison not within Lepidium, but between the different Lepidium species and Arabidopsis thaliana. These plots are more interesting.
+## PLOTTING *Lepidium campestre* vc *Arabidopsis thaliana*
+This is the same steps as before, but now I'm creating comparison not within *Lepidium*, but between the different *Lepidium* species and *Arabidopsis thaliana*. These plots are more interesting.
 
-### Generate input files for the Arabidopsis genome
+### Generate input files for the *A. thaliana* genome
 ```
 conda activate agat
 agat_sp_extract_sequences.pl -g Arabidopsis_thaliana.TAIR10.52_reformatwith_agat_convert_sp_gxf2gxf.gff -f Arabidopsis_thaliana.TAIR10.dna.toplevel.fa -t cds -o Arabidopsis_thaliana.TAIR10.cds.fa
@@ -234,8 +238,6 @@ agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/A
 conda activate jcvi
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/Arabidopsis_thaliana.TAIR10.cds.fa arabidopsis.cds
 ```
-
-### Lepidium campestre vs Arabidopsis
 ```
 #### Pairwise synteny search - campestre - arabidopsis
 python -m jcvi.compara.catalog ortholog campestre arabidopsis --no_strip_names
