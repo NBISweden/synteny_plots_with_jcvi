@@ -139,7 +139,7 @@ Prepare a separate layout file for each trio. The way it works is that the speci
  .3,     .2,    .95,       0,      , L. heterophyllum,     bottom,    heterophyllum.bed
 # edges
 e, 0, 1, hirtum_atlanticum.heterophyllum.anchors.simple
-e, 1, 2, heterophyllum .hirtum_nebrodense.anchors.simple
+e, 1, 2, heterophyllum.hirtum_nebrodense.anchors.simple
 ```
 
 ### PLOT WITH THREE SPECIES
