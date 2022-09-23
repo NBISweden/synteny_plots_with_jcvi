@@ -4,6 +4,8 @@ This is a step-by-step tutorial on how to create synteny plots between two or mu
 
 Most steps run really fast, and I have ran it on my local machine with success. At the Known Issues at the bottom of the page there's a small list of things that appear broken (all asthetics parameters for legend texts, nothing that will change the analyses results).
 
+All figures and examples right now come from a single project, so this is for internal use only. I will eventually create a mock project to use non-user owned figures so we can make this public.
+
 ## Requirements
 
 - Install texlive and other packages. Currently conda installation is not working properly, so system wide installation:
