@@ -8,11 +8,13 @@ All figures and examples right now come from a single project, so this is for in
 
 ## Requirements
 
+**If you're using [NAC](https://github.com/NBISweden/annotation-cluster/wiki/NAC-general), you don't need to re-create the environment described below, it is already there. Just `conda activate jcvi`.**
+
 - Install texlive and other packages. Currently conda installation is not working properly, so system wide installation:
 
 `sudo apt-get install -y texlive texlive-latex-extra texlive-latex-recommended dvipng cm-super msttcorefonts`
 
-- Create environment, install required packages, then install JCVI using pip. Prefer pip because the conda version struggles to see and use texlive, it's a known bug to the developer. Also installing everything one step at a time might look weird and a waste of time, but it will help with conflicts of versions of required packaged for each tool. Doing it in this order works at [NAC](https://github.com/NBISweden/annotation-cluster/wiki/NAC-general). IF you're using [NAC](https://github.com/NBISweden/annotation-cluster/wiki/NAC-general), you don't need to re-create the environment, it is already there.
+- Create environment, install required packages, then install JCVI using pip. Prefer pip because the conda version struggles to see and use texlive, it's a known bug to the developer. Also installing everything one step at a time might look weird and a waste of time, but it will help with conflicts of versions of required packaged for each tool. Doing it in this order works at [NAC](https://github.com/NBISweden/annotation-cluster/wiki/NAC-general). 
 
 ```
 conda create -n jcvi python=3.9
