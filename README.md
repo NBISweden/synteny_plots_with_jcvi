@@ -134,9 +134,9 @@ LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
 Prepare a separate layout file for each trio. The way it works is that the species that will be in the middle must be on the second line. Do not have any empty line in the file.
 ```
 # y, xstart, xend, rotation, color, label,      va,     bed
- .7,     .2,    .95,       0,      , hirtum_atlanticum,         top,    hirtum_atlanticum.bed
- .5,     .2,    .95,       0,      , heterophyllum,     bottom,     heterophyllum.bed
- .3,     .2,    .95,       0,      , hirtum_nebrodense,     bottom,    hirtum_nebrodense.bed
+ .7,     .2,    .95,       0,      , L. campestre,         top,    campestre.bed
+ .5,     .2,    .95,       0,      , Hybrid,     bottom,     hybrid.bed
+ .3,     .2,    .95,       0,      , L. heterophyllum,     bottom,    heterophyllum.bed
 # edges
 e, 0, 1, hirtum_atlanticum.heterophyllum.anchors.simple
 e, 1, 2, heterophyllum .hirtum_nebrodense.anchors.simple
@@ -160,9 +160,12 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 ![three species karyotype style figure](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre-hybrid-heterophyllum-version-2-newkaryotype.png)
 
 
-## MICROSYNTENY VISUALIZATION - this is used when you want to have plots to highlight the position of a gene (or region, or anything) between two or three species.
+## MICROSYNTENY VISUALIZATION
+This is used when you want to have plots to highlight the position of a gene (or region, or anything) between two or three species.
 
-### CREATE block.layout FILE - now it has "block" as part of the file name, and it's like before. Do not forget to remove empty lines.
+### CREATE block.layout FILE
+Now it has "block" as part of the file name, and it's like before. Do not forget to remove empty lines.
+
 ```
 # x,   y, rotation,   ha,     va,   color, ratio,            label
 0.5, 0.6,        0, left, center,       m,     1,       Campestre LG1
@@ -171,10 +174,12 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 e, 0, 1
 ```
 
-### CREATE UNIFIED BED FILE - for the two species you'll be analyzing
+### CREATE UNIFIED BED FILE
+For the two species you'll be analyzing:
 `cat campestre.bed heterophyllum.bed > campestre_heterophyllum.bed`
 
-### CREATE A BLOCK FILE - You want to plot only a region, so you'll need a blocks file with the region of interest. Let's say you want the region around a certain gene:
+### CREATE A BLOCK FILE
+You want to plot only a region, so you'll need a blocks file with the region of interest. Let's say you want the region around a certain gene:
 
 `grep "LCAMPM00000027240" campestre2.blocks -A 30 -B 30 > gtr1.blocks`
 
