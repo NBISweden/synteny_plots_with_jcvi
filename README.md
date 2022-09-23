@@ -27,8 +27,8 @@ pip install jcvi
 
 ## Preparing the data for usage by JCVI
 
-### GET CDS FROM GENOMES USING AGAT
-If you use the JCVI native tool it will break downstream, but using AGAT for the file conversions works perfectly fine.
+### Getting the CDS from the genomes using AGAT
+If you use the JCVI native tool it will break downstream, but using [AGAT](https://github.com/NBISweden/AGAT) for the file conversions works perfectly fine.
 
 `conda activate agat`
 ```
@@ -45,8 +45,8 @@ agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/h
 `conda deactivate`
 
 
-### REFORMAT THE FASTA FILES TOO
-Now using JCVI so the cds file is correctly loaded later on.
+### You need to reformat the FASTA files too
+Now using [JCVI](https://github.com/tanghaibao/jcvi/) so the cds file is correctly loaded later on.
 
 `conda activate jcvi`
 ```
@@ -55,7 +55,7 @@ python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/dat
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/hybrid_genome.cds.fa hybrid.cds
 ```
 
-## PAIRWISE SYNTENY SEARCH
+## Pairwise synteny search
 This will generate the input files for the synteny maps for pairs of genomes. It will use the basename of the cds and bed files. It will assume both are identical.
 ```
 python -m jcvi.compara.catalog ortholog campestre heterophyllum --no_strip_names
@@ -63,7 +63,7 @@ python -m jcvi.compara.catalog ortholog campestre hybrid --no_strip_names
 python -m jcvi.compara.catalog ortholog heterophyllum hybrid --no_strip_names
 ```
 
-## PAIRWISE SYNTENY VISUALIZATION
+## Pairwise synteny visualization
 This will create the synteny maps for pairs of genomes.
 ```
 python -m jcvi.graphics.dotplot campestre.heterophyllum.anchors
@@ -73,7 +73,7 @@ python -m jcvi.graphics.dotplot heterophyllum.hybrid.anchors
 
 ![synteny map example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.syntenymap.png)
 
-## PLOT HISTOGRAM
+## Plotting the histogram
 Histogram of synteny patterns (# of blocks per gene).
 ```
 python -m jcvi.compara.synteny depth --histogram campestre.heterophyllum.anchors
@@ -82,7 +82,7 @@ python -m jcvi.compara.synteny depth --histogram heterophyllum.hybrid.anchors
 ```
 ![histogram example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.depth.png)
 
-## MACRO SYNTENY VISUALIZATION
+## Macro synteny visualization
 This will plot figures with "karyotypes" for pairs of species
 
 ### First create seqids file
@@ -102,14 +102,14 @@ The parameters for the plot. x-y position on the file, position of labels, etc. 
 e, 0, 1, campestre.heterophyllum.anchors.simple
 ```
 
-### CREATE SIMPLE FILE USED IN layout FILE
+### Create the "simple" file used referred to in the *layout* file
 It's a simpler version of the anchors file, necessary for plotting
 ```
 python -m jcvi.compara.synteny screen --minspan=30 --simple campestre.heterophyllum.anchors campestre.heterophyllum.anchors.new 
 python -m jcvi.compara.synteny screen --minspan=30 --simple campestre.hybrid.anchors campestre.hybrid.anchors.new 
 python -m jcvi.compara.synteny screen --minspan=30 --simple hybrid.heterophyllum.anchors hybrid.heterophyllum.anchors.new 
 ```
-### PLOT LAYOUT FILE
+### Plot using the *layout* file
 Change according to the seqids and layoyt files you're using.
 ```
 python -m jcvi.graphics.karyotype seqids layout
@@ -119,10 +119,10 @@ python -m jcvi.graphics.karyotype seqids campestre.hybrid.layout
 ![karyotype style plot example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.karyotype.png)
 
 
-## MACRO SYNTENY VISUALIZATION WITH THREE SPECIES
+## Macro synteny visualization of three species
 This will plot figures with the "karyotypes" style of graph for 3 species at a time
 
-### SEQIDS EXAMPLE
+### SEQIDS file example
 Just like before, you'll need a seqids file with the chrs you want to plot for the 3 species. Each line for one species, following the same order of the plot. Do not have any empty line in the file.
 ```
 LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
@@ -130,7 +130,7 @@ LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
 LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
 ```
 
-### LAYOUT EXAMPLE
+### *Layout* file example
 Prepare a separate layout file for each trio. The way it works is that the species that will be in the middle must be on the second line. Do not have any empty line in the file.
 ```
 # y, xstart, xend, rotation, color, label,      va,     bed
@@ -142,7 +142,7 @@ e, 0, 1, hirtum_atlanticum.heterophyllum.anchors.simple
 e, 1, 2, heterophyllum.hirtum_nebrodense.anchors.simple
 ```
 
-### PLOT WITH THREE SPECIES
+### Plotting with three species now
 First make sure you have the pairwise synteny search for the two pairs that will form the three-species plot. Remember that it must be: top species with middle species. Then middle species and bottom species, in this strict order. You might now have these from before in the exact order.
 ```
 python -m jcvi.compara.catalog ortholog campestre hybrid --no_strip_names
@@ -160,10 +160,10 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 ![three species karyotype style figure](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre-hybrid-heterophyllum-version-2-newkaryotype.png)
 
 
-## MICROSYNTENY VISUALIZATION
+## Microsynteny visualization
 This is used when you want to have plots to highlight the position of a gene (or region, or anything) between two or three species, or just want to plot a limited region of a chromosome, showing off the different genomic features.
 
-### CREATE block.layout FILE
+### Create the *block.layout* file
 Now it has "block" as part of the file name, and it's like before. Do not forget to remove empty lines.
 
 ```
@@ -174,18 +174,18 @@ Now it has "block" as part of the file name, and it's like before. Do not forget
 e, 0, 1
 ```
 
-### CREATE UNIFIED BED FILE
+### Create the unified BED file
 For the two species you'll be analyzing:
 `cat campestre.bed heterophyllum.bed > campestre_heterophyllum.bed`
 
-### CREATE A BLOCK FILE
+### Create the *block* file
 You want to plot only a region, so you'll need a blocks file with the region of interest. Let's say you want the region around a certain gene:
 
 `grep "LCAMPM00000027240" campestre2.blocks -A 30 -B 30 > gtr1.blocks`
 
 Now I chose 30 blocks before and after the area I'm interested. You have to play with this to get as long or short region you're interested in.
 
-### PLOT MICROSYNTENY
+### Plotting microsynteny figure
 `python -m jcvi.graphics.synteny gtr1.block campestre_heterophyllum.bed blocks.layout`
 
 ![single gene microsynteny two species](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/lg1.micro.two.species.png)
@@ -196,7 +196,7 @@ If you want, you can add more flourishes to the plot. You can use "--glyphstyle=
 `python -m jcvi.graphics.synteny gtr1block campestre_heterophyllum.bed gtr1.blocks.layout --glyphstyle=arrow --genelabels=LCAMPM00000027240,LHETEM00000033639 --genelabelsize=10`
 
 
-## MICRO SYNTENY PER GENE HIGHLIGHT PLOTTING WITH 3 SPECIES
+## Microsynteny for a single region/gene between three species
 
 It follows the same steps as before. Create the block.layout file, the block file and don't forget to create the new bed file.
 
@@ -225,7 +225,7 @@ One example for GTR1.
 
 
 
-## PLOTTING *Lepidium campestre* vs *Arabidopsis thaliana*
+## Plotting *Lepidium campestre* vs *Arabidopsis thaliana*
 This is the same steps as before, but now I'm creating comparison not within *Lepidium*, but between the different *Lepidium* species and *Arabidopsis thaliana*. These plots are more interesting.
 
 ### Generate input files for the *A. thaliana* genome
