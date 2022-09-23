@@ -82,7 +82,7 @@ python -m jcvi.graphics.dotplot hirtum_atlanticum.campestre.anchors
 python -m jcvi.graphics.dotplot hirtum_atlanticum.heterophyllum.anchors
 ```
 
-![synteny map example](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/campestre.heterophyllum.syntenymap.png)
+![synteny map example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.syntenymap.png)
 
 ## PLOT HISTOGRAM
 Histogram of synteny patterns (# of blocks per gene).
@@ -94,7 +94,7 @@ python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.hirtum_nebrod
 python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.campestre.anchors
 python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.heterophyllum.anchors
 ```
-![histogram example](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/campestre.heterophyllum.depth.png)
+![histogram example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.depth.png)
 
 ## MACRO SYNTENY VISUALIZATION
 This will plot figures with "karyotypes" for pairs of species
@@ -130,7 +130,7 @@ python -m jcvi.graphics.karyotype seqids layout
 python -m jcvi.graphics.karyotype seqids campestre.hybrid.layout
 ```
 
-![karyotype style plot example](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/campestre.heterophyllum.karyotype.png)
+![karyotype style plot example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.karyotype.png)
 
 
 ## MACRO SYNTENY VISUALIZATION WITH THREE SPECIES
@@ -171,7 +171,7 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 
 `python -m jcvi.graphics.karyotype three.seqids atlanticum.campestre.nebro.three.layout`
 
-![three species karyotype style figure](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/campestre-hybrid-heterophyllum-version-2-newkaryotype.png)
+![three species karyotype style figure](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre-hybrid-heterophyllum-version-2-newkaryotype.png)
 
 
 ### PLOT WITH THREE SPECIES - campestre - hybrid - atlanticum
@@ -232,7 +232,7 @@ LCAMPM00000027242   LHETEM00000033643
 ### PLOT MICROSYNTENY
 `python -m jcvi.graphics.synteny gtr1.block campestre_heterophyllum.bed blocks.layout`
 
-![single gene mapping example](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/gtr1.png)
+![single gene mapping example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/gtr1.png)
 
 #### Add-ons to plotting
 If you want to add more flourishes you can. You can use "--glyphstyle=arrow" to add arrows for genes/features, also "--genelabels=LCAMPM00000027240" to highlight a particular feature of interest, and control the size of the font with "--genelabelsize=10".
@@ -299,9 +299,9 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 python -m jcvi.graphics.karyotype lep.arabid.seqids lep.arabid.layout
 ```
 
-![arabidopsis synteny example](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/campestre.arabidopsis.png)
+![arabidopsis synteny example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.arabidopsis.png)
 
-![arabidopsis karyotype example](https://github.com/aersoares81/plotting_synteny_maps/blob/main/figures/campestre.arabidopsis.karyotype.png)
+![arabidopsis karyotype example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.arabidopsis.karyotype.png)
 
 ### Lepidium heterophyllum vs Arabidopsis
 ```
