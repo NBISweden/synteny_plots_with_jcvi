@@ -37,7 +37,7 @@ If you use the [JCVI](https://github.com/tanghaibao/jcvi/) native tool it will b
 agat_sp_extract_sequences.pl -g L_campestre_rc3_functional.gff -f campestre_genome.fa -t cds -o campestre_genome.cds.fa
 agat_sp_extract_sequences.pl -g L_heterophyllum_rc3_functional.gff -f heterophyllum_genome.fa -t cds -o heterophyllum_genome.cds.fa
 ```
-### GETTING BED FILES USING AGAT
+### Getting BED files using AGAT
 If you use the [JCVI](https://github.com/tanghaibao/jcvi/) native tool it will break downstream, but using AGAT for the file conversions works perfectly fine.
 ```
 agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_campestre_rc3_functional.gff -o campestre.bed
