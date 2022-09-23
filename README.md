@@ -240,6 +240,7 @@ agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/A
 conda activate jcvi
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/Arabidopsis_thaliana.TAIR10.cds.fa arabidopsis.cds
 ```
+### Now generate all the plots
 ```
 #### Pairwise synteny search - campestre - arabidopsis
 python -m jcvi.compara.catalog ortholog campestre arabidopsis --no_strip_names
@@ -256,7 +257,7 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 #### Plotting figure 1x1 - campestre - arabidopsis
 python -m jcvi.graphics.karyotype lep.arabid.seqids lep.arabid.layout
 ```
-
+Two examples of plots created with the commands above:
 ![arabidopsis synteny example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.arabidopsis.png)
 
 ![arabidopsis karyotype example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.arabidopsis.karyotype.png)
