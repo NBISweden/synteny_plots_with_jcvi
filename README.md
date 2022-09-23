@@ -10,7 +10,7 @@ Most steps run really fast, and I have ran it on my local machine with success. 
 
 `sudo apt-get install -y texlive texlive-latex-extra texlive-latex-recommended dvipng cm-super msttcorefonts`
 
-- Create environment, install required packages, then install JCVI using pip. Prefer pip because the conda version struggles to see and use texlive, it's a known bug to the developer. Also installing everything one step at a time might look weird and a waste of time, but it will help with conflicts of versions of required packaged for each tool. Doing it in this order works at NAC. IF you're using NAC, you don't need to re-create the environment, it is already there.
+- Create environment, install required packages, then install JCVI using pip. Prefer pip because the conda version struggles to see and use texlive, it's a known bug to the developer. Also installing everything one step at a time might look weird and a waste of time, but it will help with conflicts of versions of required packaged for each tool. Doing it in this order works at [NAC](https://github.com/NBISweden/annotation-cluster/wiki/NAC-general). IF you're using [NAC](https://github.com/NBISweden/annotation-cluster/wiki/NAC-general), you don't need to re-create the environment, it is already there.
 
 ```
 conda create -n jcvi python=3.9
