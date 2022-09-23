@@ -243,14 +243,12 @@ python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/dat
 ### Now generate all the plots
 Please notice in the quote block below that you need to manually create some files, it's not a copy and paste case here.
 ```
-#### Pairwise synteny search - campestre - arabidopsis
+#### Pairwise synteny search - campestre vs arabidopsis
 python -m jcvi.compara.catalog ortholog campestre arabidopsis --no_strip_names
 python -m jcvi.compara.catalog ortholog arabidopsis campestre --no_strip_names
 
-#### Plot histogram  - campestre - arabidopsis
+#### Plot histogram  - campestre vs arabidopsis
 python -m jcvi.compara.synteny depth --histogram campestre.arabidopsis.anchors
-
-#### Plot synteny figure - campestre - arabidopsis
 
 ##### chrs have different names between assemblies, so be aware of that. lep.arabid.seqids is the file created with these two lines:
 LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
@@ -260,7 +258,7 @@ LG1,LG2,LG3,LG4,LG5,LG6,LG7,LG8
 python -m jcvi.compara.synteny screen --minspan=10 --simple campestre.arabidopsis.anchors campestre.arabidopsis.anchors.new 
 python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple campestre.arabidopsis.anchors campestre.arabidopsis.anchors.new
 
-#### Plotting figure 1x1 - campestre - arabidopsis
+#### Plotting figure - campestre vs arabidopsis
 python -m jcvi.graphics.karyotype lep.arabid.seqids lep.arabid.layout
 ```
 Two examples of plots created with the commands above:
