@@ -225,7 +225,7 @@ One example for GTR1.
 
 
 
-## PLOTTING *Lepidium campestre* vc *Arabidopsis thaliana*
+## PLOTTING *Lepidium campestre* vs *Arabidopsis thaliana*
 This is the same steps as before, but now I'm creating comparison not within *Lepidium*, but between the different *Lepidium* species and *Arabidopsis thaliana*. These plots are more interesting.
 
 ### Generate input files for the *A. thaliana* genome
