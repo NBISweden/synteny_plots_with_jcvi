@@ -30,7 +30,7 @@ pip install jcvi
 ## Preparing the data for usage by JCVI
 
 ### Getting the CDS from the genomes using AGAT
-If you use the JCVI native tool it will break downstream, but using [AGAT](https://github.com/NBISweden/AGAT) for the file conversions works perfectly fine.
+If you use the [JCVI](https://github.com/tanghaibao/jcvi/) native tool it will break downstream, but using [AGAT](https://github.com/NBISweden/AGAT) for the file conversions works perfectly fine.
 
 `conda activate agat`
 ```
@@ -38,7 +38,7 @@ agat_sp_extract_sequences.pl -g L_campestre_rc3_functional.gff -f campestre_geno
 agat_sp_extract_sequences.pl -g L_heterophyllum_rc3_functional.gff -f heterophyllum_genome.fa -t cds -o heterophyllum_genome.cds.fa
 ```
 ### GETTING BED FILES USING AGAT
-If you use the JCVI native tool it will break downstream, but using AGAT for the file conversions works perfectly fine.
+If you use the [JCVI](https://github.com/tanghaibao/jcvi/) native tool it will break downstream, but using AGAT for the file conversions works perfectly fine.
 ```
 agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_campestre_rc3_functional.gff -o campestre.bed
 agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_heterophyllum_rc3_functional.gff -o heterophyllum.bed
