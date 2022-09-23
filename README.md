@@ -34,17 +34,12 @@ If you use the JCVI native tool it will break downstream, but using AGAT for the
 ```
 agat_sp_extract_sequences.pl -g L_campestre_rc3_functional.gff -f campestre_genome.fa -t cds -o campestre_genome.cds.fa
 agat_sp_extract_sequences.pl -g L_heterophyllum_rc3_functional.gff -f heterophyllum_genome.fa -t cds -o heterophyllum_genome.cds.fa
-agat_sp_extract_sequences.pl -g L_hirtum_atlanticum_Lhi_rc3_functional.gff -f hirtum_atlanticum_genome.fa -t cds -o hirtum_atlanticum_genome.cds.fa
-agat_sp_extract_sequences.pl -g L_hirtum_nebrodense_rc3_functional.gff -f hirtum_nebrodense_genome.fa -t cds -o hirtum_nebrodense_genome.cds.fa
-agat_sp_extract_sequences.pl -g hybrid_LcxL_rc3_functional.gff -f hybrid_genome.fa -t cds -o hybrid_genome.cds.fa
 ```
 ### GETTING BED FILES USING AGAT
 If you use the JCVI native tool it will break downstream, but using AGAT for the file conversions works perfectly fine.
 ```
 agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_campestre_rc3_functional.gff -o campestre.bed
 agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_heterophyllum_rc3_functional.gff -o heterophyllum.bed
-agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_hirtum_atlanticum_Lhi_rc3_functional.gff -o hirtum_atlanticum.bed
-agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/L_hirtum_nebrodense_rc3_functional.gff -o hirtum_nebrodense.bed
 agat_convert_sp_gff2bed.pl --gff /projects/sandbox/andre/Lepidium-synteny/data/hybrid_LcxL_rc3_functional.gff -o hybrid.bed
 ```
 `conda deactivate`
@@ -57,8 +52,6 @@ Now using JCVI so the cds file is correctly loaded later on.
 ```
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/campestre_genome.cds.fa campestre.cds
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/heterophyllum_genome.cds.fa heterophyllum.cds
-python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/hirtum_atlanticum_genome.cds.fa hirtum_atlanticum.cds
-python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/hirtum_nebrodense_genome.cds.fa hirtum_nebrodense.cds
 python -m jcvi.formats.fasta format /projects/sandbox/andre/Lepidium-synteny/data/hybrid_genome.cds.fa hybrid.cds
 ```
 
@@ -68,9 +61,6 @@ This will generate the input files for the synteny maps for pairs of genomes. It
 python -m jcvi.compara.catalog ortholog campestre heterophyllum --no_strip_names
 python -m jcvi.compara.catalog ortholog campestre hybrid --no_strip_names
 python -m jcvi.compara.catalog ortholog heterophyllum hybrid --no_strip_names
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum hirtum_nebrodense --no_strip_names
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum campestre --no_strip_names
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum heterophyllum --no_strip_names
 ```
 
 ## PAIRWISE SYNTENY VISUALIZATION
@@ -79,9 +69,6 @@ This will create the synteny maps for pairs of genomes.
 python -m jcvi.graphics.dotplot campestre.heterophyllum.anchors
 python -m jcvi.graphics.dotplot campestre.hybrid.anchors
 python -m jcvi.graphics.dotplot heterophyllum.hybrid.anchors
-python -m jcvi.graphics.dotplot hirtum_atlanticum.hirtum_nebrodense.anchors
-python -m jcvi.graphics.dotplot hirtum_atlanticum.campestre.anchors
-python -m jcvi.graphics.dotplot hirtum_atlanticum.heterophyllum.anchors
 ```
 
 ![synteny map example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.syntenymap.png)
@@ -92,9 +79,6 @@ Histogram of synteny patterns (# of blocks per gene).
 python -m jcvi.compara.synteny depth --histogram campestre.heterophyllum.anchors
 python -m jcvi.compara.synteny depth --histogram campestre.hybrid.anchors
 python -m jcvi.compara.synteny depth --histogram heterophyllum.hybrid.anchors
-python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.hirtum_nebrodense.anchors
-python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.campestre.anchors
-python -m jcvi.compara.synteny depth --histogram hirtum_atlanticum.heterophyllum.anchors
 ```
 ![histogram example](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre.heterophyllum.depth.png)
 
@@ -158,7 +142,7 @@ e, 0, 1, hirtum_atlanticum.heterophyllum.anchors.simple
 e, 1, 2, heterophyllum .hirtum_nebrodense.anchors.simple
 ```
 
-### PLOT WITH THREE SPECIES - atlanticum - campestre - nebrodense
+### PLOT WITH THREE SPECIES
 First make sure you have the pairwise synteny search for the two pairs that will form the three-species plot. Remember that it must be: top species with middle species. Then middle species and bottom species, in this strict order. You might now have these from before in the exact order.
 ```
 python -m jcvi.compara.catalog ortholog campestre hirtum_nebrodense --no_strip_names
@@ -175,32 +159,6 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 
 ![three species karyotype style figure](https://github.com/NBISweden/synteny_plots_with_jcvi/blob/main/figures/campestre-hybrid-heterophyllum-version-2-newkaryotype.png)
 
-
-### PLOT WITH THREE SPECIES - campestre - hybrid - atlanticum
-```
-python -m jcvi.compara.catalog ortholog campestre hybrid --no_strip_names
-python -m jcvi.compara.catalog ortholog hybrid hirtum_atlanticum --no_strip_names
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple campestre.hybrid.anchors campestre.hybrid.anchors.new
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple hybrid.hirtum_atlanticum.anchors hybrid.hirtum_atlanticum.anchors.new
-python -m jcvi.graphics.karyotype three.seqids campestre.hybrid.atlanticum.three.layout
-```
-### PLOT WITH THREE SPECIES - atlanticum - hybrid - nebrodense
-```
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum hybrid --no_strip_names
-python -m jcvi.compara.catalog ortholog hybrid hirtum_nebrodense --no_strip_names
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple hirtum_atlanticum.hybrid.anchors hirtum_atlanticum.hybrid.anchors.new
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple hybrid.hirtum_nebrodense.anchors hybrid.hirtum_nebrodense.anchors.new
-python -m jcvi.graphics.karyotype three.seqids atlanticum.hybrid.nebro.three.layout
-```
-
-### PLOT WITH THREE SPECIES - atlanticum - heterophyllum - nebrodense
-```
-python -m jcvi.compara.catalog ortholog hirtum_atlanticum heterophyllum --no_strip_names
-python -m jcvi.compara.catalog ortholog heterophyllum hirtum_nebrodense --no_strip_names
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple hirtum_atlanticum.heterophyllum.anchors hirtum_atlanticum.heterophyllum.anchors.new
-python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 --simple heterophyllum.hirtum_nebrodense.anchors heterophyllum.hirtum_nebrodense.anchors.new
-python -m jcvi.graphics.karyotype three.seqids atlanticum.heterophyllum.nebro.three.layout
-```
 
 ## MICROSYNTENY VISUALIZATION - this is used when you want to have plots to highlight the position of a gene (or region, or anything) between two or three species.
 
