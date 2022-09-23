@@ -183,7 +183,7 @@ For the two species you'll be analyzing:
 ### Create the *block* file
 You want to plot only a region, so you'll need a blocks file with the region of interest. Let's say you want the region around a certain gene:
 
-`grep "LCAMPM00000027240" campestre2.blocks -A 30 -B 30 > gtr1.blocks`
+`grep "LCAMPM00000027240" campestre2.blocks -A 30 -B 30 > gtr1.block`
 
 Now I chose 30 blocks before and after the area I'm interested. You have to play with this to get as long or short region you're interested in.
 
