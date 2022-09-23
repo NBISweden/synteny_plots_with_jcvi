@@ -161,7 +161,7 @@ python -m jcvi.compara.synteny screen --minspan=10 --minsize=1 --intrabound=500 
 
 
 ## MICROSYNTENY VISUALIZATION
-This is used when you want to have plots to highlight the position of a gene (or region, or anything) between two or three species.
+This is used when you want to have plots to highlight the position of a gene (or region, or anything) between two or three species, or just want to plot a limited region of a chromosome, showing off the different genomic features.
 
 ### CREATE block.layout FILE
 Now it has "block" as part of the file name, and it's like before. Do not forget to remove empty lines.
@@ -183,16 +183,7 @@ You want to plot only a region, so you'll need a blocks file with the region of 
 
 `grep "LCAMPM00000027240" campestre2.blocks -A 30 -B 30 > gtr1.blocks`
 
-### Highlight region of interest
-Now I chose 30 blocks before and after the area I'm interested. You have to play with this to get as long or short region you're interested in. Also, you'll need to highlight the region of interest, of course. To do that you'll have to manually edit the blocks file. You add a code for a color and an asterisk. For example, to highlight in green a region, just add g* to the beginning of the line. Here's an example:
-
-```
-LCAMPM00000027239   LHETEM00000033632
-g*LCAMPM00000027240 LHETEM00000033639
-LCAMPM00000027241   LHETEM00000033642
-LCAMPM00000027242   LHETEM00000033643
-```
-
+Now I chose 30 blocks before and after the area I'm interested. You have to play with this to get as long or short region you're interested in.
 
 ### PLOT MICROSYNTENY
 `python -m jcvi.graphics.synteny gtr1.block campestre_heterophyllum.bed blocks.layout`
@@ -209,7 +200,17 @@ If you want to add more flourishes you can. You can use "--glyphstyle=arrow" to 
 
 It follows the same steps as before. Create the block.layout file, the block file and don't forget to create the new bed file.
 
-cat campestre.bed heterophyllum.bed hybrid.bed > campestre_heterophyllum_hybrid.bed
+`cat campestre.bed heterophyllum.bed hybrid.bed > campestre_heterophyllum_hybrid.bed`
+
+### Highlight region of interest
+To do that you'll have to manually edit the blocks file. You add a code for a color and an asterisk. For example, to highlight in green a region, just add g* to the beginning of the line. Here's an example:
+
+```
+LCAMPM00000027239   LHETEM00000033632
+g*LCAMPM00000027240 LHETEM00000033639
+LCAMPM00000027241   LHETEM00000033642
+LCAMPM00000027242   LHETEM00000033643
+```
 
 #### GTR1
 One example for GTR1.
